@@ -1,5 +1,25 @@
 package com.test;
 
+/**
+ * Convert binary tree to max heap
+ * 
+ * Input:
+ *						15                               
+ *
+ *				9				25
+ *
+ *			7		12    	20		30
+ *
+ * Output:
+ *						30                               
+ *
+ *				12				25
+ *
+ *			7		9    	20		15
+ *			
+ * @author Virag Shah
+ *
+ */
 public class BinarySearchTreeToMaxHeap {
 
 	public static class Node {

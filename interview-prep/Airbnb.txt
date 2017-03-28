@@ -1,0 +1,36 @@
+Issues:
+- Sorting based on price/reviews/relevance
+- Improve search quality - need to show relevant places, shows far off places, 
+show how much far it is from where you want to go etc.
+- Some analytics on who booked in the past 2-3 days, who is currently looking etc., how many people recommend etc.
+- expensive searches, bad photos, 
+- neighborhood info - safe / unsafe etc
+- Airbnb vs Hotels
+	- quality issues (helpful reviews like amazon could help)
+	- difficult booking experience
+	- free breakfasts, gym, spas etc.
+- Similarity based suggestions should be relevant
+- keyword based searching should be supported along with location search
+- more instant bookings options and well communicated - have helpful reviews to choose last min bookings
+- lot of human interaction - talk to host, chat, fix arrival times, wait for host response etc., 
+  disturbing hosts too much
+- lot of friction with key pickups etc.
+
+Features:
+- Social sharing feature
+- Integration with Bots and IOT devices - google home, Amazon echo etc.
+	- booking through IOT devices
+	- Chat with bots to get questions about the house answered
+	- extend Airbnb app to help interact with it once checked in to the house
+		- eg: "Ask Airbnb what's the wifi password?" "Ask Airbnb where are there extra towels" 
+			"Sorry I don't know the answer to that question, let me ask the host and I'll get back to you" 
+			(building the database of FAQ in the background)
+- different experiences for travel type - eg: tourist/fun, for work, visit friends family, romantic getaway
+- different travel partners - family, your partner, friends, colleague etc. 
+- Airbnb tonight - just like hotel tonight..last minute booking in a city.
+- Tie up with uber/lyft etc. for pickup/dropoff service. Inbuilt integration would help
+- Airbnb Miles - just like airline or hotel membership programs...earn rewards for more travel etc.
+- Food service integration - stocked up fridge, lunch/dinner waiting when you arrive etc.
+
+	
+
