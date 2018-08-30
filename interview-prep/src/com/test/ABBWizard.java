@@ -1,4 +1,4 @@
-package com.test;
+package tools.scrutiny.sharing.orphanrecords;
 
 import java.util.*;
 
@@ -17,67 +17,76 @@ import java.util.*;
 
 class ABBWizard {
 
-    class Wizard implements Comparable<Wizard> {
+    static class Node implements Comparable<Node> {
         int id;
-        int dist;
+        int cost;
 
-        Wizard(int id) {
+        Node(int id) {
             this.id = id;
-            this.dist = Integer.MAX_VALUE;
+            this.cost = Integer.MAX_VALUE;
         }
 
         @Override
-        public int compareTo(Wizard that) {
-            return this.dist - that.dist;
+        public int compareTo(Node that) {
+            return this.cost - that.cost;
         }
     }
 
-
-    public List<Integer> getShortestPath(List<List<Integer>> wizards, int source, int target) {
+    /**
+     * Shortest path algorithm
+     * 
+     * @param wizards
+     * @param source
+     * @param target
+     * @return
+     */
+    public List<Integer> cheapestWayToMeet(List<List<Integer>> wizards, int source, int target) {
 
         if (wizards == null || wizards.size() == 0) {
             return null;
         }
+
         int n = wizards.size();
         int[] parent = new int[n];
 
-        Map<Integer, Wizard> map = new HashMap<Integer, Wizard>();
+        Map<Integer, Node> nodeMap = new HashMap<Integer, Node>();
 
         for (int i = 0; i < n; i++) {
             parent[i] = i;
-            map.put(i, new Wizard(i));
+            nodeMap.put(i, new Node(i));
         }
 
-        map.get(source).dist = 0;
-        Queue<Wizard> pq = new PriorityQueue<Wizard>(n);
-        pq.offer(map.get(source));
+        nodeMap.get(source).cost = 0;
+        Queue<Node> queue = new PriorityQueue<Node>(n);
+        queue.offer(nodeMap.get(source));
 
-        while (!pq.isEmpty()) {
-            Wizard curr = pq.poll();
+        while (!queue.isEmpty()) {
+
+            Node curr = queue.poll();
             List<Integer> neighbors = wizards.get(curr.id);
 
             for (int neighbor : neighbors) {
-                Wizard next = map.get(neighbor);
-                int weight = (int) Math.pow(next.id - curr.id, 2);
+                Node next = nodeMap.get(neighbor);
+                int cost = (int) Math.pow(next.id - curr.id, 2);
 
-                if (curr.dist + weight < next.dist) {
+                if (curr.cost + cost < next.cost) {
                     parent[next.id] = curr.id;
-                    pq.remove(next);
-                    next.dist = curr.dist + weight;
-                    pq.offer(next);
+                    queue.remove(next);
+                    next.cost = curr.cost + cost;
+                    queue.offer(next);
                 }
             }
         }
 
-        List<Integer> res = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
         int t = target;
         while (t != source) {
-            res.add(t);
+            result.add(t);
             t = parent[t];
         }
-        res.add(source);
-        Collections.reverse(res);
-        return res;
+        result.add(source);
+        Collections.reverse(result);
+        return result;
     }
 
     /* public int minimumDistance(int shortestDistance[], boolean visited[]) {
@@ -130,6 +139,8 @@ class ABBWizard {
 
     public static void main(String[] args) {
 
+        ABBWizard sol = new ABBWizard();
+
         List<List<Integer>> wizards = Arrays.asList(
                 Arrays.asList(1, 2, 3), // Wizard 0
                 Arrays.asList(8, 6, 4), // Wizard 1
@@ -143,9 +154,7 @@ class ABBWizard {
                 Arrays.asList(1, 4)     // Wizard 9   
                 );
 
-        ABBWizard sol = new ABBWizard();
-
-        List<Integer> results = sol.getShortestPath(wizards, 0, 9);
+        List<Integer> results = sol.cheapestWayToMeet(wizards, 0, 9);
 
         for (Integer result : results) {
             System.out.println(result);
