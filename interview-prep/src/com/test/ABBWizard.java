@@ -1,4 +1,4 @@
-package tools.scrutiny.sharing.orphanrecords;
+package com.test;
 
 import java.util.*;
 
