@@ -22,6 +22,12 @@ import java.util.Set;
  */
 public class LengthOfLongestSubstring {
 
+    /**
+     * Brute force solution in O(n^3)
+     * 
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstring(String s) {
 
         if(s == null || s.length() == 0) {
@@ -73,5 +79,27 @@ public class LengthOfLongestSubstring {
         }
 
         return true;
+    }
+    
+    /**
+     * This is a better optimized solution in O(n)
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstringOptimized(String s) {
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        int ans = 0, i = 0, j = 0;
+        while (i < n && j < n) {
+            // try to extend the range [i, j]
+            if (!set.contains(s.charAt(j))){
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
+            }
+            else {
+                set.remove(s.charAt(i++));
+            }
+        }
+        return ans;
     }
 }
