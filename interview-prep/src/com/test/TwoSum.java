@@ -1,4 +1,4 @@
-package sharing.visibility.service.api.connect.resource;
+package com.test;
 
 import java.util.ArrayList;
 import java.util.List;
