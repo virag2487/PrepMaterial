@@ -83,6 +83,7 @@ public class LengthOfLongestSubstring {
     
     /**
      * This is a better optimized solution in O(n)
+     *
      * @param s
      * @return
      */
