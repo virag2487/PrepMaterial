@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author virag.shah
  */
-class TwoSum {
+public class TwoSum {
 
     public int[] twoSum(int[] nums, int target) {
 
